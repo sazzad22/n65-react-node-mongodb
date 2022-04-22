@@ -19,7 +19,11 @@ const Home = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          if (data.deletedCount > 0) {
+            console.log("deleted");
+            const remaining = users.filter((user) => user._id !== id);
+            setUsers(remaining);
+          }
         });
     }
   };
